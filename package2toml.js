@@ -26,7 +26,7 @@ function formatTOML (data, registry) {
   }
   const toml = `
 name = "legacy@${registry}/${data.name}"
-version = ${data.version}
+version = "${data.version}"
 
 [dependencies]
 ${Object.keys(data.dependencies).map(k => `"legacy@${registry}/${k}" = "${data.dependencies[k]}"`).join('\n')}

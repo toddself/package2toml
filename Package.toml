@@ -1,6 +1,6 @@
 
 name = "legacy@registry.entropic.dev/package2toml"
-version = 1.0.0
+version = "1.0.0"
 
 [dependencies]
 "legacy@registry.entropic.dev/minimist" = "^1.2.0"
