@@ -25,7 +25,7 @@ function formatTOML (data, user, registry) {
     registry = url.parse(registry).hostname
   }
   const toml = `
-name = "legacy@${registry}/${data.name}"
+name = "${user}@${registry}/${data.name}"
 version = "${data.version}"
 
 [dependencies]
