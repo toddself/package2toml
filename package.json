@@ -1,6 +1,6 @@
 {
   "name": "package2toml",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Convert your package.json to Package.toml",
   "bin": "cli.js",
   "main": "package2toml.js",
