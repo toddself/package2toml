@@ -2,6 +2,7 @@ const fs = require('fs')
 const url = require('url')
 const path = require('path')
 const { promisify } = require('util')
+const execAsync = promisify(require('child_process').exec)
 
 const readFileAsync = promisify(fs.readFile)
 const writeFileAsync = promisify(fs.writeFile)
@@ -21,9 +22,6 @@ async function read (src) {
 }
 
 function formatTOML (data, user, registry) {
-  if (registry.includes('/')) {
-    registry = url.parse(registry).hostname
-  }
   const toml = `
 name = "${user}@${registry}/${data.name}"
 version = "${data.version}"
@@ -45,10 +43,28 @@ async function write (src, data) {
   }
 }
 
+async function getUser (registry) {
+  const reg = registry ? `https://${registry}` : null
+  const cmd = `ds whoami ${reg ? `--registry=${reg}` : ''}`
+  try {
+    const output = await execAsync(cmd)
+    return output.stdout.trim()
+  } catch (err) {
+    console.log('Could not get username from `ds whoami` and no --user was specified')
+    console.log(err)
+    throw err
+  }
+}
+
 async function main (opts) {
   const srcDir = opts.srcDir || process.cwd()
-  const registry = opts.registry || 'registry.entropic.dev'
-  const user = opts.user || 'legacy'
+  let registry = opts.registry || 'registry.entropic.dev'
+  if (registry.includes('/')) {
+    registry = url.parse(registry).hostname
+  }
+
+  const user = opts.user || await getUser(registry)
+
   const data = await read(srcDir)
   const toml = formatTOML(data, user, registry)
   await write(srcDir, toml)

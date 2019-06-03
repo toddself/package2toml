@@ -1,5 +1,5 @@
 
-name = "legacy@registry.entropic.dev/package2toml"
+name = "toddself@registry.entropic.dev/package2toml"
 version = "1.0.3"
 
 [dependencies]
