@@ -1,0 +1,28 @@
+{
+  "name": "package2toml",
+  "version": "1.0.0",
+  "description": "Convert your package.json to Package.toml",
+  "bin": "cli.js",
+  "main": "package2toml.js",
+  "keywords": [
+    "entropic",
+    "entropic-dev",
+    "Package.toml"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/toddself/package2toml.git"
+  },
+  "author": "Todd Kennedy <todd@selfassembled.org>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/toddself/package2toml/issues"
+  },
+  "homepage": "https://github.com/toddself/package2toml#readme",
+  "dependencies": {
+    "minimist": "^1.2.0"
+  }
+}
