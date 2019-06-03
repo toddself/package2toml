@@ -12,7 +12,8 @@ const argv = minimist(process.argv.slice(2), {
   alias: {
     help: 'h',
     registry: 'r',
-    version: 'v'
+    version: 'v',
+    user: 'u'
   },
   boolean: [
     'help',
@@ -40,8 +41,10 @@ function showHelp () {
   }
   const srcDir = argv._[0] || process.cwd()
   const registry = argv.registry
+  const user = argv.user
   package2toml({
     srcDir,
-    registry
+    registry,
+    user
   })
 })(argv)

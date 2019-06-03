@@ -5,6 +5,7 @@
     -v, --version   show version
     -h, --help      show this text
     -r, --registry  specify a registry (default: registry.entropic.dev)
+    -u, --user      username on registry instance (default: legacy)
 
   Examples:
 

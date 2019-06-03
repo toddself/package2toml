@@ -20,7 +20,7 @@ async function read (src) {
   }
 }
 
-function formatTOML (data, registry) {
+function formatTOML (data, user, registry) {
   if (registry.includes('/')) {
     registry = url.parse(registry).hostname
   }
@@ -48,8 +48,9 @@ async function write (src, data) {
 async function main (opts) {
   const srcDir = opts.srcDir || process.cwd()
   const registry = opts.registry || 'registry.entropic.dev'
+  const user = opts.user || 'legacy'
   const data = await read(srcDir)
-  const toml = formatTOML(data, registry)
+  const toml = formatTOML(data, user, registry)
   await write(srcDir, toml)
 }
 
